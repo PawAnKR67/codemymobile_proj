@@ -1,0 +1,66 @@
+<div style="float: left;width: 50%">
+<h2>Users</h2>
+<ul class="heroes" style="width:90%">
+  
+  <li style="padding-bottom: 15px;" *ngFor="let user of users">
+    <span class="badge" style="padding:0px;"><img width="30px" src="{{urlPrefix}}/avatars/{{user.avatar}}.jpg"></span>
+    <span> {{user.firstName}} {{user.lastName}}</span>
+    <span (click)="getFriends(user.id)" style="margin-left: 10px;font-weight: bold;font-family:cursive;"> See {{user.friends.split(',').length}} friends</span>
+    <span (click)="getFriendOfFriends(user.id)" style="margin-left: 10px;font-weight: bold;font-family:cursive;"> See friends of friends of {{user.firstName}}</span>
+  </li>
+</ul>
+</div>
+
+<!-- <div class="card-footer pb-0 pt-3">
+  <jw-pagination [users]="users" (changePage)="onChangePage($event)"></jw-pagination>
+</div> -->
+
+<!-- <ng-container *ngIf="change">
+<app-friend [userID]="id" ></app-friend>
+</ng-container> -->
+
+<!-- <div *ngIf="selectedHero">
+
+  <h2>{{selectedHero.name | uppercase}} Details</h2>
+  <div><span>id: </span>{{selectedHero.id}}</div>
+  <div>
+    <label>name:
+      <input [(ngModel)]="selectedHero.name" placeholder="name"/>
+    </label>
+  </div>
+
+</div> -->
+
+
+<div style="float: right;width: 50%;" *ngIf = "!isFriendsHidden"> 
+<h2>Friends of {{user_name}}</h2>
+<ul class="heroes" style="width:60%">
+  
+  <li style="padding-bottom: 15px;" *ngFor="let user of friends">
+    <span class="badge" style="padding:0px;"><img width="30px" src="{{urlPrefix}}/avatars/{{user.avatar}}.jpg"></span>
+    <span> {{user.firstName}} {{user.lastName}}</span>
+    <span  style="margin-left: 10px;font-weight: bold;font-family:cursive;"> {{user.friends.split(',').length}} friends</span>
+    <!-- <span (click)="getFriendOfFriends(user.id)" style="margin-left: 10px;font-weight: bold;font-family:cursive;"> See friends of friends of {{user.firstName}}</span> -->
+  </li>
+</ul>
+</div>
+
+<div style="float: right;width: 50%;" *ngIf = "!isFofHidden"> 
+<h2>Friends of friends of {{user_name}}</h2>
+<ul class="heroes" style="width:60%">
+  
+  <li style="padding-bottom: 15px;" *ngFor="let user of fof">
+    <span class="badge" style="padding:0px;"><img width="30px" src="{{urlPrefix}}/avatars/{{user.avatar}}.jpg"></span>
+    <span> {{user.firstName}} {{user.lastName}}</span>
+    <span  style="margin-left: 10px;font-weight: bold;font-family:cursive;"> {{user.friends.split(',').length}} friends</span>
+    <!-- <span (click)="getFriendOfFriends(user.id)" style="margin-left: 10px;font-weight: bold;font-family:cursive;"> See friends of friends of {{user.firstName}}</span> -->
+  </li>
+</ul>
+</div>
+
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
